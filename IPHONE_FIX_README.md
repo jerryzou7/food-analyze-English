@@ -1,119 +1,121 @@
-# iPhone 上傳圖片問題修復
+# iPhone image upload issue fix
 
-## 問題描述
-在 iPhone 上無法上傳圖片到食物卡路里分析器。
+## Issue description
+Cannot upload images to Food Calorie Analyzer on iPhone.
 
-## 修復內容
+## Fixes
 
-### 1. 改進文件輸入配置
-- 添加了更詳細的 `accept` 屬性，支持更多圖片格式
-- 添加了 `capture="environment"` 屬性來支持相機拍攝
-- 創建了兩個獨立的文件輸入框：一個用於選擇圖片，一個用於拍照
+### 1. Improved file input configuration
+- Added more detailed `accept` attribute to support more image formats
+- Added `capture="environment"` attribute to support camera shooting
+- Created two separate file input boxes: one for selecting an image and one for taking a photo
 
-### 2. 新增用戶界面
-- 添加了兩個按鈕：「選擇圖片」和「拍照」
-- 改進了移動設備的響應式設計
-- 添加了用戶友好的提示信息
+### 2. New user interface
+- Added two buttons: "Select an image" and "Take a photo"
+- Improved responsive design for mobile devices
+- Added user-friendly prompts
 
-### 3. 增強錯誤處理
-- 添加了文件類型驗證
-- 添加了文件大小限制（10MB）
-- 改進了錯誤提示信息
-- 添加了詳細的調試信息
+### 3. Enhanced error handling
+- Added file type validation
+- Added file size limit (10MB)
+- Improved error prompts
+- Added detailed debugging information
 
-### 4. 移動設備優化
-- 添加了設備檢測功能
-- 為 iOS 設備添加了特殊處理
-- 改進了觸摸事件處理
-- 優化了按鈕佈局和樣式
+### 4. Mobile device optimization
+- Added device detection function
+- Added special handling for iOS devices
+- Improved touch event handling
+- Optimized button layout and style
 
-### 5. 新增功能
-- 支持 HEIC/HEIF 格式（iPhone 默認格式）
-- 支持 WebP 格式
-- 添加了文件預覽功能
-- 添加了文件信息顯示
+### 5. New features
+- Support HEIC/HEIF format (iPhone default format)
+- Support WebP format
+- Added file preview function
+- Added file information display
 
-## 測試方法
+## Test method
 
-1. **使用測試頁面**：打開 `test-upload.html` 來測試基本的上傳功能
-2. **檢查控制台**：在瀏覽器開發者工具中查看詳細的調試信息
-3. **測試不同場景**：
-   - 從相冊選擇圖片
-   - 使用相機拍照
-   - 測試不同格式的圖片
-   - 測試大文件上傳
+1. **Use test page**: Open `test-upload.html` to test basic upload function
 
-## 技術細節
+2. **Check console**: View detailed debugging information in browser developer tools
 
-### 文件輸入配置
+3. **Test different scenarios**:
+- Select image from album
+- Take photo with camera
+- Test image in different formats
+- Test large file upload
+
+## Technical details
+
+### File input configuration
 ```html
-<!-- 選擇圖片 -->
+<!-- Select image -->
 <input type="file" id="image-input" accept="image/*,image/jpeg,image/png,image/webp,image/heic,image/heif" hidden>
 
-<!-- 拍照 -->
+<!-- Take photo -->
 <input type="file" id="camera-input" accept="image/*,image/jpeg,image/png,image/webp,image/heic,image/heif" capture="environment" hidden>
 ```
 
-### 支持的圖片格式
+### Supported image formats
 - JPEG/JPG
 - PNG
 - WebP
-- HEIC/HEIF (iPhone 默認格式)
+- HEIC/HEIF (iPhone default format)
 - GIF
 
-### 文件大小限制和壓縮
-- 最大文件大小：20MB
-- 超過 20MB 的圖片會自動壓縮
-- 智能壓縮算法根據文件大小動態調整：
-  - 大於 15MB：壓縮到 1280px，質量 60%
-  - 大於 10MB：壓縮到 1600px，質量 70%
-  - 大於 5MB：壓縮到 1920px，質量 80%
-  - 小於 5MB：壓縮到 2048px，質量 85%
-- 壓縮過程中顯示進度信息
+### File size limit and compression
+- Maximum file size: 20MB
+- Images over 20MB will be automatically compressed
+- Smart compression algorithm dynamically adjusts according to file size:
+- Larger than 15MB: compress to 1280px, 60% quality
+- Larger than 10MB: compress to 1600px, 70% quality
+- Larger than 5MB: compress to 1920px, 80% quality
+- Smaller than 5MB: compress to 2048px, 85% quality
+- Display progress information during compression
 
-### 設備檢測
+### Device detection
 ```javascript
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 ```
 
-## 常見問題解決
+## FAQ
 
-### 1. 如果仍然無法上傳
-- 檢查瀏覽器是否支持文件 API
-- 確認網站使用 HTTPS（某些功能需要安全連接）
-- 檢查瀏覽器權限設置
+### 1. If you still can't upload
+- Check if your browser supports the file API
+- Confirm that the website uses HTTPS (some features require a secure connection)
+- Check browser permission settings
 
-### 2. 如果相機功能不工作
-- 確認網站使用 HTTPS
-- 檢查瀏覽器是否允許相機權限
-- 嘗試刷新頁面後重試
+### 2. If the camera function does not work
+- Confirm that the website uses HTTPS
+- Check if the browser allows camera permissions
+- Try refreshing the page and try again
 
-### 3. 如果圖片格式不支持
-- 嘗試將圖片轉換為 JPEG 或 PNG 格式
-- 檢查圖片文件是否損壞
-- 確認圖片大小不超過 20MB（超過會自動壓縮）
+### 3. If the image format is not supported
+- Try converting the image to JPEG or PNG format
+- Check if the image file is damaged
+- Confirm that the image size does not exceed 20MB (it will be automatically compressed if it exceeds)
 
-### 4. 如果圖片太大無法上傳
-- 系統會自動壓縮大圖片
-- 壓縮過程中請耐心等待
-- 如果壓縮失敗，請選擇較小的圖片
-- 建議使用 JPEG 格式以獲得更好的壓縮效果
+### 4. If the image is too large to upload
+- The system will automatically compress large images
+- Please be patient during the compression process
+- If compression fails, please select a smaller image
+- It is recommended to use the JPEG format for better compression
 
-## 瀏覽器兼容性
+## Browser compatibility
 
 - ✅ Safari (iOS)
 - ✅ Chrome (iOS)
 - ✅ Firefox (iOS)
 - ✅ Edge (iOS)
-- ✅ 其他基於 WebKit 的瀏覽器
+- ✅ Other WebKit-based browsers
 
-## 更新日誌
+## Changelog
 
-- 2024: 添加 iPhone 上傳支持
-- 添加相機拍攝功能
-- 改進錯誤處理和用戶體驗
-- 添加設備檢測和調試功能
-- 添加智能圖片壓縮功能
-- 支持大容量圖片自動壓縮
-- 添加壓縮進度顯示 
+- 2024: Add iPhone upload support
+- Add camera shooting function
+- Improve error handling and user experience
+- Add device detection and debugging function
+- Add smart image compression function
+- Support automatic compression of large-capacity images
+- Add compression progress display
