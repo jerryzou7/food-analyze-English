@@ -1,171 +1,171 @@
-# 食物卡路里分析器
+# Food Calorie Analyzer
 
-一個基於 AI 技術的食物營養成分和卡路里分析網站，使用 Google Gemini API 來分析食物圖片和文字描述。
+A food nutrition and calorie analysis website based on AI technology, using Google Gemini API to analyze food images and text descriptions.
 
-## 功能特色
+## Features
 
-- 🍽️ **圖片分析**: 上傳食物圖片，AI 自動識別並分析營養成分
-- 📝 **文字分析**: 輸入食物描述，獲取詳細的營養信息
-- 🎨 **現代化 UI**: 美觀的響應式設計，支持桌面和移動設備
-- ⚡ **即時分析**: 快速獲取分析結果
-- 📱 **拖拽上傳**: 支持拖拽圖片文件到上傳區域
+- 🍽️ **Image Analysis**: Upload food pictures, AI automatically identifies and analyzes nutritional content
+- 📝 **Text Analysis**: Enter food descriptions to get detailed nutritional information
+- 🎨 **Modern UI**: Beautiful responsive design, supports desktop and mobile devices
+- ⚡ **Instant Analysis**: Get analysis results quickly
+- 📱 **Drag and drop upload**: Support dragging image files to the upload area
 
-## 技術棧
+## Technology stack
 
-- **後端**: Node.js + Express
-- **前端**: HTML5 + CSS3 + JavaScript (ES6+)
-- **AI 服務**: Google Gemini API
-- **文件處理**: Multer
-- **HTTP 客戶端**: Axios
+- **Backend**: Node.js + Express
+- **Front-end**: HTML5 + CSS3 + JavaScript (ES6+)
+- **AI Service**: Google Gemini API
+- **File Processing**: Multer
+- **HTTP Client**: Axios
 
-## 安裝和運行
+## Installation and Running
 
-### 前置要求
+### Prerequisites
 
-- Node.js (版本 14 或更高)
-- npm 或 yarn
+- Node.js (version 14 or higher)
+- npm or yarn
 
-### 安裝步驟
+### Installation steps
 
-1. **克隆或下載項目**
-   ```bash
-   # 如果使用 git
-   git clone <repository-url>
-   cd food-calorie-analyzer
-   ```
+1. **Clone or download the project**
+```bash
+# If using git
+git clone <repository-url>
+cd food-calorie-analyzer
+```
 
-2. **安裝依賴**
-   ```bash
-   npm install
-   ```
+2. **Install dependencies**
+```bash
+npm install
+```
 
-3. **啟動服務器**
-   ```bash
-   # 開發模式（自動重啟）
-   npm run dev
-   
-   # 生產模式
-   npm start
-   ```
+3. **Start the server**
+```bash
+# Development mode (auto restart)
+npm run dev
 
-4. **訪問網站**
-   打開瀏覽器訪問 `http://localhost:3000`
+# Production mode
+npm start
+```
 
-## 使用方法
+4. **Visit the website**
+Open a browser and visit `http://localhost:3000`
 
-### 圖片分析
-1. 點擊"圖片分析"標籤
-2. 拖拽圖片到上傳區域或點擊"選擇圖片"
-3. 預覽圖片後點擊"分析圖片"
-4. 等待 AI 分析結果
+## How to use
 
-### 文字分析
-1. 點擊"文字分析"標籤
-2. 在文本框中輸入食物描述（如：一個蘋果、一碗白米飯）
-3. 點擊"分析文字"
-4. 查看分析結果
+### Image analysis
+1. Click the "Image analysis" tab
+2. Drag an image to the upload area or click "Select image"
+3. After previewing the image, click "Analyze image"
+4. Wait for AI analysis results
 
-## API 端點
+### Text analysis
+1. Click the "Text analysis" tab
+2. Enter a food description in the text box (e.g., an apple, a bowl of white rice)
+3. Click "Analyze text"
+4. View the analysis results
+
+## API endpoint
 
 ### POST /api/analyze-image
-分析上傳的食物圖片
+Analyze uploaded food images
 
-**請求**: 
+**Request**:
 - Content-Type: multipart/form-data
-- Body: image (圖片文件)
+- Body: image (image file)
 
-**響應**:
+**Response**:
 ```json
 {
-  "analysis": "分析結果文本"
+"analysis": "Analysis result text"
 }
 ```
 
 ### POST /api/analyze-text
-分析文字描述的食物
+Analyze food with text descriptions
 
-**請求**:
+**Request**:
 ```json
 {
-  "foodDescription": "食物描述"
+"foodDescription": "Food description"
 }
 ```
 
-**響應**:
+**Response**:
 ```json
 {
-  "analysis": "分析結果文本"
+"analysis": "Analysis result text"
 }
 ```
 
-## 項目結構
+## Project structure
 
 ```
 food-calorie-analyzer/
 ├── public/
-│   ├── index.html      # 主頁面
-│   ├── styles.css      # 樣式文件
-│   └── script.js       # 前端 JavaScript
-├── server.js           # Express 服務器
-├── package.json        # 項目配置
-└── README.md          # 說明文檔
+│ ├── index.html # Main page
+│ ├── styles.css # Style file
+│ └── script.js # Front-end JavaScript
+├── server.js # Express server
+├── package.json # Project configuration
+└── README.md # Documentation
 ```
 
-## 環境變量
+## Environment variables
 
-項目使用您的 Gemini API key，已配置在 `server.js` 中：
+The project uses your Gemini API key, which is configured in `server.js`:
 
 ```javascript
 const GEMINI_API_KEY = 'AIzaSyCdGHAQIU03BL7w4bYRHbShCQ7MNo-BBrI';
 ```
 
-## 開發說明
+## Development instructions
 
-### 添加新功能
-1. 在 `server.js` 中添加新的 API 端點
-2. 在 `public/script.js` 中添加前端邏輯
-3. 在 `public/index.html` 中添加 UI 元素
-4. 在 `public/styles.css` 中添加樣式
+### Add new features
+1. Add new API endpoints in `server.js`
+2. Add front-end logic in `public/script.js`
+3. Add UI elements in `public/index.html`
+4. Add styles in `public/styles.css`
 
-### 自定義分析提示
-修改 `server.js` 中的提示文本來改變 AI 分析的行為：
+### Customize analysis tips
+Modify the tip text in `server.js` to change the behavior of AI analysis:
 
 ```javascript
-// 圖片分析提示
-text: "請分析這張食物圖片，並提供以下信息：1. 食物名稱（中文）2. 估計卡路里 3. 主要營養成分 4. 健康建議。請用中文回答，格式要清晰易讀。"
+// Image analysis tips
+text: "Please analyze this food image and provide the following information: 1. Food name (in Chinese) 2. Estimated calories 3. Main nutrients 4. Health advice. Please answer in Chinese and format it clearly and easily readable. "
 
-// 文字分析提示
-text: `請分析以下食物描述，並提供詳細的營養信息：${foodDescription}。請提供：1. 食物名稱 2. 估計卡路里 3. 主要營養成分（蛋白質、碳水化合物、脂肪、纖維等）4. 健康建議。請用中文回答，格式要清晰易讀。`
+// Text analysis tips
+text: `Please analyze the following food description and provide detailed nutritional information: ${foodDescription}. Please provide: 1. Food name 2. Estimated calories 3. Main nutrients (protein, carbohydrates, fat, fiber, etc.) 4. Health advice. Please answer in Chinese and format it clearly and easily readable. `
 ```
 
-## 故障排除
+## Troubleshooting
 
-### 常見問題
+### Common Problems
 
-1. **API 錯誤**
-   - 檢查 Gemini API key 是否有效
-   - 確認網絡連接正常
+1. **API Error**
+- Check if the Gemini API key is valid
+- Confirm that the network connection is normal
 
-2. **圖片上傳失敗**
-   - 檢查圖片格式是否支持（JPG, PNG, GIF 等）
-   - 確認圖片大小不超過 10MB
+2. **Image upload failed**
+- Check if the image format is supported (JPG, PNG, GIF, etc.)
+- Confirm that the image size does not exceed 10MB
 
-3. **服務器無法啟動**
-   - 確認端口 3000 未被佔用
-   - 檢查 Node.js 版本是否兼容
+3. **Server cannot start**
+- Confirm that port 3000 is not occupied
+- Check if the Node.js version is compatible
 
-## 授權
+## License
 
 MIT License
 
-## 貢獻
+## Contribution
 
-歡迎提交 Issue 和 Pull Request！
+Welcome to submit issues and pull requests!
 
-## 更新日誌
+## Changelog
 
 ### v1.0.0
-- 初始版本發布
-- 支持圖片和文字分析
-- 現代化響應式 UI
-- 拖拽上傳功能 
+- Initial version release
+- Support image and text analysis
+- Modern responsive UI
+- Drag and drop upload function
